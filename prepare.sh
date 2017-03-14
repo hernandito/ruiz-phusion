@@ -17,6 +17,9 @@ apt-get update
 
 apt-get install -qy libapache2-mod-php5 wget mc git zip tools php5-gd php5-sqlite php5-mcrypt php5-tidy php5-mysql libapache2-mod-proxy-html 
 
+# Update apache configuration with this one
+RUN a2enmod proxy proxy_http proxy_ajp rewrite deflate substitute headers proxy_balancer proxy_connect proxy_html xml2enc authnz_ldap
+
 cd /usr/bin/
 wget https://dl.eff.org/certbot-auto
 chmod a+x /usr/bin/certbot-auto
@@ -44,6 +47,8 @@ $minimal_apt_get_install software-properties-common
 
 ## Upgrade all packages.
 apt-get dist-upgrade -y --no-install-recommends
+
+a2enmod proxy proxy_http proxy_ajp rewrite deflate substitute headers proxy_balancer proxy_connect proxy_html xml2enc authnz_ldap
 
 ## Fix locale.
 $minimal_apt_get_install language-pack-en
