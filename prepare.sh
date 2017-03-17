@@ -15,7 +15,7 @@ sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list
 sed -i 's/^#\s*\(deb.*multiverse\)$/\1/g' /etc/apt/sources.list
 apt-get update
 
-apt-get install -qy libapache2-mod-php wget mc git zip tools php7.0 php7.0-mcrypt php7.0-gd php7.0-sqlite3 php7.0-tidy php7.0-mysql libapache2-mod-proxy-html 
+apt-get install -qy libapache2-mod-php wget mc git zip tools php7.0 php7.0-mcrypt php7.0-gd php7.0-sqlite3 php7.0-tidy php7.0-mysql
 
 cd /usr/bin/
 wget https://dl.eff.org/certbot-auto
