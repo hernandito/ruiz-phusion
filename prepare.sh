@@ -15,10 +15,7 @@ sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list
 sed -i 's/^#\s*\(deb.*multiverse\)$/\1/g' /etc/apt/sources.list
 apt-get update
 
-apt-get install -qy libapache2-mod-php5 wget mc git zip tools php5-gd php5-sqlite php5-mcrypt php5-tidy php5-mysql libapache2-mod-proxy-html 
-
-# Update apache configuration with this one
-RUN a2enmod proxy proxy_http proxy_ajp rewrite deflate substitute headers proxy_balancer proxy_connect proxy_html xml2enc authnz_ldap
+apt-get install -qy libapache2-mod-php wget mc git zip tools php7.0 php7.0-mcrypt php7.0-gd php7.0-sqlite3 php7.0-tidy php7.0-mysql libapache2-mod-proxy-html 
 
 cd /usr/bin/
 wget https://dl.eff.org/certbot-auto
@@ -48,6 +45,7 @@ $minimal_apt_get_install software-properties-common
 ## Upgrade all packages.
 apt-get dist-upgrade -y --no-install-recommends
 
+# Update apache configuration with this one
 a2enmod proxy proxy_http proxy_ajp rewrite deflate substitute headers proxy_balancer proxy_connect proxy_html xml2enc authnz_ldap
 
 ## Fix locale.
